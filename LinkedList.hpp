@@ -10,9 +10,11 @@ class LinkedList
     public:
         LinkedList();
         void display();
+        int getCount();
         void addEnd(int value);
         int removeEnd();
         void addFront(int value);
         int removeFront();
+        void addAtIndex(int value, int index);
         int removeAtIndex(int index);
 };

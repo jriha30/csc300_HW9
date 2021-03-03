@@ -11,6 +11,41 @@ LinkedList::LinkedList()
     this->count = 0;
 }
 
+
+void LinkedList::addAtIndex(int value, int index)
+{
+    if(this->head)
+    {
+        if(index < 0 || index > this->count)
+        {
+            cout << "ArrayIndexOutOfBoundsException" << endl;
+        }
+        else if(index == 0)
+        {
+            this->addFront(value);
+        }
+        else if(index == this->count)
+        {
+            this->addEnd(value);
+        }
+        else
+        {
+            Node* newNode = new Node(value);
+
+            Node* prevNode = this->head;
+            for(int i = 0; i < index - 1; i++)
+            {
+                prevNode = prevNode->getNextNode();
+            }
+            newNode->setNextNode(prevNode->getNextNode());
+            prevNode->setNextNode(newNode);
+        }
+        this->count++;
+    }
+}
+
+
+
 int LinkedList::removeAtIndex(int index)
 {
     if(this->head)
@@ -84,7 +119,7 @@ void LinkedList::addFront(int value)
         Node* n = new Node(value);
         n->setNextNode(this->head);
         this->head = n;
-         this->count++;
+        this->count++;
     }
     else
     {
@@ -171,5 +206,10 @@ void LinkedList::display()
         }
         cout << currNode->getPayload() << endl;
     }
-    
+}
+
+
+int LinkedList::getCount()
+{
+    return this->count;
 }

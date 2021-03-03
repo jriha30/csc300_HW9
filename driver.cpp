@@ -22,10 +22,10 @@ int main(int argc, char** argv)
     ll->addFront(13);
     ll->addFront(17);
     ll->display();
-    int value = ll->removeAtIndex(3);
+    ll->addAtIndex(3, 5);
+    ll->removeAtIndex(5);
     ll->display();
-    cout << value << endl;
-    
+    cout << ll->getCount() << endl;
     return 0;
 }
 
